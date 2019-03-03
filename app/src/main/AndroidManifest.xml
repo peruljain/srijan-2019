@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="iit.ism.dhanbad.srijan">
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logoicons"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logoicons"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="iit.ism.dhanbad.srijan.TechnicalTeam"></activity>
+        <activity android:name="iit.ism.dhanbad.srijan.ContactUs" />
+        <activity android:name="iit.ism.dhanbad.srijan.AboutUsClass" />
+        <activity android:name="iit.ism.dhanbad.srijan.Developers" />
+        <activity
+            android:name="iit.ism.dhanbad.srijan.splashactivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="iit.ism.dhanbad.srijan.informalslatest"></activity>
+        <activity android:name="iit.ism.dhanbad.srijan.MainActivity" />
+        <activity android:name="iit.ism.dhanbad.srijan.NewsFeed" />
+        <activity android:name="iit.ism.dhanbad.srijan.MnMSrijan" />
+        <activity android:name="iit.ism.dhanbad.srijan.competition" />
+        <activity android:name="iit.ism.dhanbad.srijan.dance" />
+        <activity android:name="iit.ism.dhanbad.srijan.salsa" />
+        <activity android:name="iit.ism.dhanbad.srijan.informals" />
+        <activity android:name="iit.ism.dhanbad.srijan.Musical" />
+        <activity android:name="iit.ism.dhanbad.srijan.Dramatics" />
+        <activity android:name="iit.ism.dhanbad.srijan.Photography" />
+        <activity android:name="iit.ism.dhanbad.srijan.FineArts" />
+        <activity android:name="iit.ism.dhanbad.srijan.Films" />
+        <activity android:name="iit.ism.dhanbad.srijan.Kavyanjali" />
+        <activity android:name="iit.ism.dhanbad.srijan.Quiz" />
+        <activity android:name="iit.ism.dhanbad.srijan.Literary" />
+        <activity android:name="iit.ism.dhanbad.srijan.Footloose" />
+        <activity android:name="iit.ism.dhanbad.srijan.Reflection" />
+        <activity android:name="iit.ism.dhanbad.srijan.Streetbeats" />
+        <activity android:name="iit.ism.dhanbad.srijan.HustleHerd" />
+        <activity android:name="iit.ism.dhanbad.srijan.Aaroh" />
+        <activity android:name="iit.ism.dhanbad.srijan.Unplugged" />
+        <activity android:name="iit.ism.dhanbad.srijan.PairOnStage" />
+        <activity android:name="iit.ism.dhanbad.srijan.Rangmanch" />
+        <activity android:name="iit.ism.dhanbad.srijan.Monoact" />
+        <activity android:name="iit.ism.dhanbad.srijan.Snappers" />
+        <activity android:name="iit.ism.dhanbad.srijan.CreativeCanvas" />
+        <activity android:name="iit.ism.dhanbad.srijan.Hallabol" />
+        <activity android:name="iit.ism.dhanbad.srijan.ChaiPeCharcha" />
+        <activity android:name="iit.ism.dhanbad.srijan.SketchTheView" />
+        <activity android:name="iit.ism.dhanbad.srijan.FacePainting" />
+        <activity android:name="iit.ism.dhanbad.srijan.TshirtPainting" />
+        <activity android:name="iit.ism.dhanbad.srijan.DoodleMaking" />
+        <activity android:name="iit.ism.dhanbad.srijan.KavyanjaliEvent" />
+        <activity android:name="iit.ism.dhanbad.srijan.PopQuiz" />
+        <activity android:name="iit.ism.dhanbad.srijan.SportsQuiz" />
+        <activity android:name="iit.ism.dhanbad.srijan.BusinessQuiz" />
+        <activity android:name="iit.ism.dhanbad.srijan.GeneralQuiz" />
+        <activity android:name="iit.ism.dhanbad.srijan.Standup" />
+        <activity android:name="iit.ism.dhanbad.srijan.Trichonia" />
+        <activity android:name="iit.ism.dhanbad.srijan.HeadOn" />
+        <activity android:name="iit.ism.dhanbad.srijan.Filmmaking" />
+        <activity android:name="iit.ism.dhanbad.srijan.Workshop" />
+        <activity android:name="iit.ism.dhanbad.srijan.Paridhan" />
+        <activity android:name="iit.ism.dhanbad.srijan.Avalanche" />
+        <activity android:name="iit.ism.dhanbad.srijan.CampusPrincess" />
+        <activity android:name="iit.ism.dhanbad.srijan.NowYouSeeMe" />
+        <activity android:name="iit.ism.dhanbad.srijan.MagicMirrors" />
+        <activity android:name="iit.ism.dhanbad.srijan.Prom" />
+        <activity android:name="iit.ism.dhanbad.srijan.SilentDJ" />
+        <activity android:name="iit.ism.dhanbad.srijan.Karaoke" />
+        <activity android:name="iit.ism.dhanbad.srijan.DJBattle" />
+        <activity android:name="iit.ism.dhanbad.srijan.Zorbing" />
+        <activity android:name="iit.ism.dhanbad.srijan.PhotoBooth" />
+        <activity android:name="iit.ism.dhanbad.srijan.MovieScreening" />
+        <activity android:name="iit.ism.dhanbad.srijan.Chess" />
+        <activity android:name="iit.ism.dhanbad.srijan.CSGO" />
+        <activity android:name="iit.ism.dhanbad.srijan.PUBG" />
+        <activity android:name="iit.ism.dhanbad.srijan.FIFA19" />
+        <activity android:name="iit.ism.dhanbad.srijan.Snooker" />
+        <activity android:name="iit.ism.dhanbad.srijan.Paintball" />
+        <activity android:name="iit.ism.dhanbad.srijan.KaviSammelan" />
+        <activity android:name="iit.ism.dhanbad.srijan.OperationCampaign" />
+        <activity android:name="iit.ism.dhanbad.srijan.PoetrySlam" />
+        <activity android:name="iit.ism.dhanbad.srijan.Fanfic" />
+        <activity android:name="iit.ism.dhanbad.srijan.Harmony" />
+        <activity android:name="iit.ism.dhanbad.srijan.starattraction" />
+
+        <service android:name="iit.ism.dhanbad.srijan.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name="iit.ism.dhanbad.srijan.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name="iit.ism.dhanbad.srijan.Games" />
+        <activity android:name="iit.ism.dhanbad.srijan.Highlights" />
+        <activity android:name="iit.ism.dhanbad.srijan.Details" />
+        <activity android:name="iit.ism.dhanbad.srijan.stardetails" />
+    </application>
+
+</manifest>
