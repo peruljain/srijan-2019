@@ -54,7 +54,7 @@ public class Avalanche extends MainActivity {
     ConnectivityManager connectivityManager;//new line
 
     //todo: photos url from firebase
-    String[] photos = {"https://firebasestorage.googleapis.com/v0/b/srijan-6df05.appspot.com/o/Informals%2FAvalanche%2Favalanche1.jpg?alt=media&token=f6f46dba-e622-4e5b-81f4-c2e334f6a3c1","https://firebasestorage.googleapis.com/v0/b/srijan-6df05.appspot.com/o/Informals%2FAvalanche%2Favalanche2.jpg?alt=media&token=00c6643a-8c0b-4214-8d38-acbab0fe6771","https://firebasestorage.googleapis.com/v0/b/srijan-6df05.appspot.com/o/Informals%2FAvalanche%2Favalanche3.jpg?alt=media&token=7c62d441-1659-4530-858e-e2cb17bef35a"};
+    String[] photos = {"https://firebasestorage.googleapis.com/v0/b/srijan-6df05.appspot.com/o/Informals%2FAvalanche%2F1.jpg?alt=media&token=0c35d08d-ad08-42d2-89c5-55eb4991b5e0","https://firebasestorage.googleapis.com/v0/b/srijan-6df05.appspot.com/o/Informals%2FAvalanche%2F2.jpg?alt=media&token=71c8d873-cb84-4100-8911-06ed123a1a1f"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
