@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -54,7 +55,7 @@ public class Avalanche extends MainActivity {
     ConnectivityManager connectivityManager;//new line
 
     //todo: photos url from firebase
-    String[] photos = {"https://firebasestorage.googleapis.com/v0/b/srijan-6df05.appspot.com/o/Informals%2FAvalanche%2Favalanche1.jpg?alt=media&token=f6f46dba-e622-4e5b-81f4-c2e334f6a3c1","https://firebasestorage.googleapis.com/v0/b/srijan-6df05.appspot.com/o/Informals%2FAvalanche%2Favalanche2.jpg?alt=media&token=00c6643a-8c0b-4214-8d38-acbab0fe6771","https://firebasestorage.googleapis.com/v0/b/srijan-6df05.appspot.com/o/Informals%2FAvalanche%2Favalanche3.jpg?alt=media&token=7c62d441-1659-4530-858e-e2cb17bef35a"};
+    String[] photos = {"https://firebasestorage.googleapis.com/v0/b/srijan-6df05.appspot.com/o/Informals%2FAvalanche%2F1.jpg?alt=media&token=0c35d08d-ad08-42d2-89c5-55eb4991b5e0","https://firebasestorage.googleapis.com/v0/b/srijan-6df05.appspot.com/o/Informals%2FAvalanche%2F2.jpg?alt=media&token=973a5b5d-c05d-4544-9568-e24a553d74ed","https://firebasestorage.googleapis.com/v0/b/srijan-6df05.appspot.com/o/Informals%2FAvalanche%2Favalanche1.jpg?alt=media&token=f6f46dba-e622-4e5b-81f4-c2e334f6a3c1"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -281,58 +282,67 @@ public class Avalanche extends MainActivity {
 
     //image slider code
     private void init() {
-        viewPager = (ViewPager)findViewById(R.id.viewPager);
-        //todo:set context
-        viewPager.setAdapter(new adapterimage(Avalanche.this,imagesList));
-        CircleIndicator circleIndicator = (CircleIndicator)findViewById(R.id.indicator);
-        circleIndicator.setViewPager(viewPager);
-        //todo:copy
-        connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);//new line
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+            viewPager = (ViewPager)findViewById(R.id.viewPager);
+            //todo:set context
+            viewPager.setAdapter(new adapterimage(getApplicationContext(),imagesList));
+            CircleIndicator circleIndicator = (CircleIndicator)findViewById(R.id.indicator);
+            circleIndicator.setViewPager(viewPager);
 
-        //final float density = getResources().getDisplayMetrics().density;
+            connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);//new line
+
+            //final float density = getResources().getDisplayMetrics().density;
 
 //Set circle indicator radius
-        //  circleIndicator.set(5 * density);
+            //  circleIndicator.set(5 * density);
 
-        NUM_PAGES =imagesList.size();
+            NUM_PAGES =imagesList.size();
 
-        // Auto start of viewpager
-        final Handler handler = new Handler();
-        final Runnable Update = new Runnable() {
-            public void run() {
-                if (currentPage == NUM_PAGES) {
-                    currentPage = 0;
+            // Auto start of viewpager
+            final Handler handler = new Handler();
+            final Runnable Update = new Runnable() {
+                public void run() {
+                    if (currentPage == NUM_PAGES) {
+                        currentPage = 0;
+                    }
+                    viewPager.setCurrentItem(currentPage++, true);
                 }
-                viewPager.setCurrentItem(currentPage++, true);
-            }
-        };
-        Timer swipeTimer = new Timer();
-        swipeTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(Update);
-            }
-        }, 3000, 3000);
+            };
+            Timer swipeTimer = new Timer();
+            swipeTimer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    handler.post(Update);
+                }
+            }, 3000, 3000);
 
-        // Pager listener over indicator
-        circleIndicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            // Pager listener over indicator
+            circleIndicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-            @Override
-            public void onPageSelected(int position) {
-                currentPage = position;
+                @Override
+                public void onPageSelected(int position) {
+                    currentPage = position;
 
-            }
+                }
 
-            @Override
-            public void onPageScrolled(int pos, float arg1, int arg2) {
+                @Override
+                public void onPageScrolled(int pos, float arg1, int arg2) {
 
-            }
+                }
 
-            @Override
-            public void onPageScrollStateChanged(int pos) {
+                @Override
+                public void onPageScrollStateChanged(int pos) {
 
-            }
-        });
+                }
+            });
+            // Call some material design APIs here
+        } else {
+            viewPager = (ViewPager)findViewById(R.id.viewPager);
+            //todo:set context
+            viewPager.setAdapter(new adapterimage(getApplicationContext(),imagesList));
+            // Implement this feature without material design
+        }
+
 
     }
     //notification

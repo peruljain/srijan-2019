@@ -2,11 +2,13 @@ package iit.ism.dhanbad.srijan;
 
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -53,8 +55,7 @@ public class CampusPrincess extends MainActivity {
     ConnectivityManager connectivityManager;//new line
 
     //todo: photos url from firebase
-    String[] photos = {"https://firebasestorage.googleapis.com/v0/b/srijan-6df05.appspot.com/o/Informals%2FCampusPrincess%2FPrincess1.jpg?alt=media&token=7aa41bfa-0101-4d63-894e-a4d3413d4da8","https://firebasestorage.googleapis.com/v0/b/srijan-6df05.appspot.com/o/Informals%2FCampusPrincess%2Fprincess2.jpg?alt=media&token=4f45ccea-729b-46fd-a7fa-c4a13017c917","https://firebasestorage.googleapis.com/v0/b/srijan-6df05.appspot.com/o/Informals%2FCampusPrincess%2Fprincess3.jpg?alt=media&token=7c6eb0c5-507e-4838-9f11-012ba4600462"};
-
+    String[] photos = {"https://firebasestorage.googleapis.com/v0/b/srijan-6df05.appspot.com/o/Informals%2FCampusPrincess%2Fcp1.jpg?alt=media&token=20b423b5-dd7d-444a-a55a-42c098ecfc77"};
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +63,7 @@ public class CampusPrincess extends MainActivity {
 
         imagesList = new ArrayList<>();
         imagesList.add(photos[0]);
-        imagesList.add(photos[1]);
+
         init();
         nav();
         final TextView headingTextView = (TextView)findViewById(R.id.slide3_heading_textView);
@@ -280,58 +281,69 @@ public class CampusPrincess extends MainActivity {
 
     //image slider code
     private void init() {
-        viewPager = (ViewPager)findViewById(R.id.viewPager);
-        //todo:set context
-        viewPager.setAdapter(new adapterimage(CampusPrincess.this,imagesList));
-        CircleIndicator circleIndicator = (CircleIndicator)findViewById(R.id.indicator);
-        circleIndicator.setViewPager(viewPager);
-        //todo:copy
-        connectivityManager = (ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);//new line
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+            viewPager = (ViewPager)findViewById(R.id.viewPager);
+            //todo:set context
+            viewPager.setAdapter(new adapterimage(getApplicationContext(),imagesList));
+            CircleIndicator circleIndicator = (CircleIndicator)findViewById(R.id.indicator);
+            circleIndicator.setViewPager(viewPager);
 
-        //final float density = getResources().getDisplayMetrics().density;
+            connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);//new line
+
+            //final float density = getResources().getDisplayMetrics().density;
 
 //Set circle indicator radius
-        //  circleIndicator.set(5 * density);
+            //  circleIndicator.set(5 * density);
 
-        NUM_PAGES =imagesList.size();
+            NUM_PAGES =imagesList.size();
 
-        // Auto start of viewpager
-        final Handler handler = new Handler();
-        final Runnable Update = new Runnable() {
-            public void run() {
-                if (currentPage == NUM_PAGES) {
-                    currentPage = 0;
+            // Auto start of viewpager
+            final Handler handler = new Handler();
+            final Runnable Update = new Runnable() {
+                public void run() {
+                    if (currentPage == NUM_PAGES) {
+                        currentPage = 0;
+                    }
+                    viewPager.setCurrentItem(currentPage++, true);
                 }
-                viewPager.setCurrentItem(currentPage++, true);
-            }
-        };
-        Timer swipeTimer = new Timer();
-        swipeTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(Update);
-            }
-        }, 3000, 3000);
+            };
+            Timer swipeTimer = new Timer();
+            swipeTimer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    handler.post(Update);
+                }
+            }, 3000, 3000);
 
-        // Pager listener over indicator
-        circleIndicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            // Pager listener over indicator
+            circleIndicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-            @Override
-            public void onPageSelected(int position) {
-                currentPage = position;
+                @Override
+                public void onPageSelected(int position) {
+                    currentPage = position;
 
-            }
+                }
 
-            @Override
-            public void onPageScrolled(int pos, float arg1, int arg2) {
+                @Override
+                public void onPageScrolled(int pos, float arg1, int arg2) {
 
-            }
+                }
 
-            @Override
-            public void onPageScrollStateChanged(int pos) {
+                @Override
+                public void onPageScrollStateChanged(int pos) {
 
-            }
-        });
+                }
+            });
+            // Call some material design APIs here
+        } else {
+            viewPager = (ViewPager)findViewById(R.id.viewPager);
+            //todo:set context
+            viewPager.setAdapter(new adapterimage(getApplicationContext(),imagesList));
+            // Implement this feature without material design
+        }
+
+
+
 
     }
     //notification

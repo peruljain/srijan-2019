@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         compition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"Click on the bell icon for notifications.",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(MainActivity.this, competition.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
@@ -203,6 +204,18 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_technical:
                         startActivity(new Intent(MainActivity.this, TechnicalTeam.class));
+                        break;
+                    case R.id.registration:
+                        if (InternetConnection.checkConnection(MainActivity.this)) {
+
+                            Uri uri = Uri.parse("googlechrome://navigate?url=" + "http://srijaniitism.org/");
+                            Intent i = new Intent(Intent.ACTION_VIEW, uri);
+                            i.setPackage("com.android.chrome");
+                            startActivity(i);
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(),"Please Check Your Internet Connection",Toast.LENGTH_LONG).show();
+                        }
                         break;
                     case R.id.nav_newsfeed:
                         if (InternetConnection.checkConnection(MainActivity.this)) {

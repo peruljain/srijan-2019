@@ -55,7 +55,7 @@ public class Quiz extends MainActivity {
 
         //addimg items to list
         //R.color.card1,R.color.card2,R.color.card3;
-        cardsList.add(new cards(R.color.card1, "Pop Culture Quiz", R.drawable.culturalquiz));//yha pr salsa ki jagah event name or image bhi change krna
+        //cardsList.add(new cards(R.color.card1, "Pop Culture Quiz", R.drawable.culturalquiz));//yha pr salsa ki jagah event name or image bhi change krna
         cardsList.add(new cards(R.color.card2, "Sports Quiz", R.drawable.sportsquiz));
         cardsList.add(new cards(R.color.card3, "Business Quiz",  R.drawable.businessquiz));
         cardsList.add(new cards(R.color.card1, "General Quiz",  R.drawable.generalquiz));

@@ -30,7 +30,9 @@ public class ContactUs extends AppCompatActivity {
                 ContactUs.super.onBackPressed();
             }
         });
-
+         contactList.add(new ContactModel(R.drawable.convener,"Dr. Abhishek Kumar ","Convener","+91 9572159264"));
+        contactList.add(new ContactModel(R.drawable.coconvener,"Dr. Sanjeev Anand Sahu","Co-Convener","+91 9708607865"));
+        contactList.add(new ContactModel(R.drawable.treasurer,"Dr. Pankaj Kumar Jain","Treasurer","+91 7766904994"));
         contactList.add(new ContactModel(R.drawable.vibhu,"Vibhu Pandey","Executive Head and Coordinator","+91 9810859969"));
         contactList.add(new ContactModel(R.drawable.saurabh_kumar,"Saurabh Kumar","Co - Coordinator","+91 8002840940"));
         contactList.add(new ContactModel(R.drawable.mayank_purohit,"Mayank Purohit","Head Sponsorship","+91 7742736956"));

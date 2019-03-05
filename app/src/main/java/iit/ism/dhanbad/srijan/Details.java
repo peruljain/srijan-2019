@@ -25,5 +25,6 @@ ImageView back;
         TextView textView = (TextView)findViewById(R.id.detailss );
         String details = getIntent().getStringExtra("details");
         textView.setText(details);
+
     }
 }

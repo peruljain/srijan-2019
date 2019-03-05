@@ -3,12 +3,12 @@
     package="iit.ism.dhanbad.srijan">
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
     <application
         android:allowBackup="true"
         android:icon="@drawable/logoicons"
         android:label="@string/app_name"
         android:roundIcon="@drawable/logoicons"
-        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="iit.ism.dhanbad.srijan.TechnicalTeam"></activity>
@@ -81,7 +81,6 @@
         <activity android:name="iit.ism.dhanbad.srijan.PhotoBooth" />
         <activity android:name="iit.ism.dhanbad.srijan.MovieScreening" />
         <activity android:name="iit.ism.dhanbad.srijan.Chess" />
-        <activity android:name="iit.ism.dhanbad.srijan.CSGO" />
         <activity android:name="iit.ism.dhanbad.srijan.PUBG" />
         <activity android:name="iit.ism.dhanbad.srijan.FIFA19" />
         <activity android:name="iit.ism.dhanbad.srijan.Snooker" />

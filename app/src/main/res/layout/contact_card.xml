@@ -71,6 +71,7 @@
                     android:layout_marginBottom="0dp"
                     android:textColor="@color/text2"
                     android:textSize="12sp"
+                    android:autoLink="phone"
                     tools:text="99xx88xx66" />
             </LinearLayout>
 

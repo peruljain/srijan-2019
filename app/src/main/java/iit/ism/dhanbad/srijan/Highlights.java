@@ -47,9 +47,9 @@ public class Highlights extends  MainActivity {
         //addimg items to list
         //yaha pr change titletext me jo me  naam dunga vo ayenge,drawable me image club name se save krna;
 
-        cardsList.add(new cards(R.color.card1, "Mr & Miss Srijan",  R.drawable.rangmanch));
-        cardsList.add(new cards(R.color.card2, "Campus Princess",  R.drawable.silentdj));
-        cardsList.add(new cards(R.color.card3, "Paridhan",  R.drawable.solosinging));
+        cardsList.add(new cards(R.color.card1, "Mr & Miss Srijan",  R.drawable.prom));
+        cardsList.add(new cards(R.color.card2, "Campus Princess",  R.drawable.facepaint));
+        cardsList.add(new cards(R.color.card3, "Paridhaan",  R.drawable.hustleherd));
         cardsList.add(new cards(R.color.card1, "Avalanche",  R.drawable.trichonia));
         adapter = new danceadapter(Highlights.this, cardsList);
 

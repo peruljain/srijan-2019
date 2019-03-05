@@ -55,7 +55,7 @@ public class Films extends MainActivity {
         //addimg items to list
         //R.color.card1,R.color.card2,R.color.card3;
         cardsList.add(new cards(R.color.card1, "24 hours Filmmaking", R.drawable.filmmaking24hrs));//yha pr salsa ki jagah event name or image bhi change krna
-        cardsList.add(new cards(R.color.card2, "Workshop(IFP)",  R.drawable.workshoplci));
+      //  cardsList.add(new cards(R.color.card2, "Workshop(IFP)",  R.drawable.workshoplci));
         adapter = new danceadapter(Films.this, cardsList);
 
         recyclerView.setAdapter(adapter);

@@ -350,7 +350,7 @@ public class danceadapter extends RecyclerView.Adapter<danceadapter.danceadapter
                             ((Highlights) mctx).overridePendingTransition(R.anim.slide_in,R.anim.slide_out);
 
                     }
-                    if(cards.getTitletext().equals("Paridhan")){
+                    if(cards.getTitletext().equals("Paridhaan")){
                         Intent intent = new Intent(mctx, Paridhan.class);//todo:change to class
                         mctx.startActivity(intent);
                         if(mctx instanceof Highlights)//todo:yha pr dance ki jagah jis class se arahe hai vo likhna.for example agar games se arahe hai toh games likhna
@@ -462,14 +462,7 @@ public class danceadapter extends RecyclerView.Adapter<danceadapter.danceadapter
                             ((Games) mctx).overridePendingTransition(R.anim.slide_in,R.anim.slide_out);
 
                     }
-                    if(cards.getTitletext().equals("CS GO")){
-                        Intent intent = new Intent(mctx, CSGO.class);//todo:change to class
-                        mctx.startActivity(intent);
-                        if(mctx instanceof Games)//todo:yha pr dance ki jagah jis class se arahe hai vo likhna.for example agar games se arahe hai toh games likhna
 
-                            ((Games) mctx).overridePendingTransition(R.anim.slide_in,R.anim.slide_out);
-
-                    }
                     if(cards.getTitletext().equals("FIFA 19")){
                         Intent intent = new Intent(mctx, FIFA19.class);//todo:change to class
                         mctx.startActivity(intent);

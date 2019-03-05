@@ -52,7 +52,7 @@ public class competition extends MainActivity {
         cardsList.add(new cards(R.color.card1, "Photography", "Click till you drop", R.drawable.snappers));
         cardsList.add(new cards(R.color.card2, "Fine Arts", "Showcase the magic in your brush", R.drawable.tshirtpainting));
         cardsList.add(new cards(R.color.card3, "Films", "Lights Camera Action", R.drawable.filmmaking24hrs));
-        cardsList.add(new cards(R.color.card1, "Kavyanjali", "Shoot for the loot", R.drawable.kavyanjali));
+        cardsList.add(new cards(R.color.card1, "Hindi Literary", "Shoot for the loot", R.drawable.kavyanjali));
         cardsList.add(new cards(R.color.card2, "Quiz", "Grey matter is Power", R.drawable.generalquiz));
         cardsList.add(new cards(R.color.card3, "Literary", "Close the books, open the mind", R.drawable.standup));
         adapter = new adaptermain(competition.this, cardsList);

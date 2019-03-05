@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -37,7 +38,10 @@ import java.util.TimerTask;
 
 import me.relex.circleindicator.CircleIndicator;
 
+import static android.net.ConnectivityManager.TYPE_MOBILE;
+import static android.net.ConnectivityManager.TYPE_WIFI;
 import static android.widget.Toast.LENGTH_LONG;
+import static iit.ism.dhanbad.srijan.R.drawable.belloff;
 
 public class Footloose extends MainActivity {
 
@@ -72,10 +76,10 @@ public class Footloose extends MainActivity {
 
             if(sharedPreferenceConfig.getstatus15()){
                 //todo:set context
-                imageView.setImageResource(R.drawable.bell);
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.bell));
 
             }else{
-                imageView.setImageResource(R.drawable.belloff);
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.belloff));
             }
 
 
@@ -94,19 +98,17 @@ public class Footloose extends MainActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-                    //we are connected to a network
+                 //todo change
+                if(InternetConnection.checkConnection(getApplicationContext())){
                     connected = true;
-                }
-                else
+                }else{
                     connected = false;
+                }
                  if(connected){
                       if(!sharedPreferenceConfig.getstatus15()){
                          //todo:set context
                          Toast.makeText(Footloose.this,"Unsubscribed from event's notifications", LENGTH_LONG).show();
-                         imageView.setImageResource(R.drawable.bell);
+                          imageView.setImageDrawable(getResources().getDrawable(R.drawable.bell));
                          FirebaseMessaging.getInstance().unsubscribeFromTopic("Footloose");//event name
                          sharedPreferenceConfig.writeImagestatus15(true);
                      }else{
@@ -115,7 +117,7 @@ public class Footloose extends MainActivity {
                          //todo:set context
                          Toast.makeText(Footloose.this,"Successfully subscribed for notifications", LENGTH_LONG).show();
                          sharedPreferenceConfig.writeImagestatus15(false);
-                         imageView.setImageResource(R.drawable.belloff);
+                         imageView.setImageDrawable(getResources().getDrawable(R.drawable.belloff));
                      }
                  }
                else{
@@ -172,13 +174,13 @@ public class Footloose extends MainActivity {
             @Override
             public void onClick(View v) {
 
-                if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-                    //we are connected to a network
+                //todo : change
+                if(InternetConnection.checkConnection(getApplicationContext())){
                     connected = true;
-                }
-                else
+                }else{
                     connected = false;
+                }
+
                 if(connected){
                     Dialog.show();
                     //event name
@@ -245,14 +247,12 @@ public class Footloose extends MainActivity {
 
             @Override
             public void onClick(View v) {
-
-                if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-                    //we are connected to a network
+                    //todo - change
+                if(InternetConnection.checkConnection(getApplicationContext())){
                     connected = true;
-                }
-                else
+                }else{
                     connected = false;
+                }
 
                 if(connected){
                     progressDialog.show();
@@ -291,59 +291,67 @@ public class Footloose extends MainActivity {
 
     //image slider code
     private void init() {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+            viewPager = (ViewPager)findViewById(R.id.viewPager);
+            //todo:set context
+            viewPager.setAdapter(new adapterimage(getApplicationContext(),imagesList));
+            CircleIndicator circleIndicator = (CircleIndicator)findViewById(R.id.indicator);
+            circleIndicator.setViewPager(viewPager);
 
-        viewPager = (ViewPager)findViewById(R.id.viewPager);
-        //todo:set context
-        viewPager.setAdapter(new adapterimage(Footloose.this,imagesList));
-        CircleIndicator circleIndicator = (CircleIndicator)findViewById(R.id.indicator);
-        circleIndicator.setViewPager(viewPager);
+            connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);//new line
 
-         connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);//new line
-
-        //final float density = getResources().getDisplayMetrics().density;
+            //final float density = getResources().getDisplayMetrics().density;
 
 //Set circle indicator radius
-        //  circleIndicator.set(5 * density);
+            //  circleIndicator.set(5 * density);
 
-        NUM_PAGES =imagesList.size();
+            NUM_PAGES =imagesList.size();
 
-        // Auto start of viewpager
-        final Handler handler = new Handler();
-        final Runnable Update = new Runnable() {
-            public void run() {
-                if (currentPage == NUM_PAGES) {
-                    currentPage = 0;
+            // Auto start of viewpager
+            final Handler handler = new Handler();
+            final Runnable Update = new Runnable() {
+                public void run() {
+                    if (currentPage == NUM_PAGES) {
+                        currentPage = 0;
+                    }
+                    viewPager.setCurrentItem(currentPage++, true);
                 }
-                viewPager.setCurrentItem(currentPage++, true);
-            }
-        };
-        Timer swipeTimer = new Timer();
-        swipeTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(Update);
-            }
-        }, 3000, 3000);
+            };
+            Timer swipeTimer = new Timer();
+            swipeTimer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    handler.post(Update);
+                }
+            }, 3000, 3000);
 
-        // Pager listener over indicator
-        circleIndicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            // Pager listener over indicator
+            circleIndicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-            @Override
-            public void onPageSelected(int position) {
-                currentPage = position;
+                @Override
+                public void onPageSelected(int position) {
+                    currentPage = position;
 
-            }
+                }
 
-            @Override
-            public void onPageScrolled(int pos, float arg1, int arg2) {
+                @Override
+                public void onPageScrolled(int pos, float arg1, int arg2) {
 
-            }
+                }
 
-            @Override
-            public void onPageScrollStateChanged(int pos) {
+                @Override
+                public void onPageScrollStateChanged(int pos) {
 
-            }
-        });
+                }
+            });
+            // Call some material design APIs here
+        } else {
+            viewPager = (ViewPager)findViewById(R.id.viewPager);
+            //todo:set context
+            viewPager.setAdapter(new adapterimage(getApplicationContext(),imagesList));
+            // Implement this feature without material design
+        }
+
 
     }
     //notification
