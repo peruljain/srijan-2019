@@ -65,7 +65,7 @@ public class PoetrySlam extends MainActivity {
         imagesList = new ArrayList<>();
         imagesList.add(photos[0]);
         imagesList.add(photos[1]);
-        imagesList.add(photos[2]);
+//        imagesList.add(photos[2]);
         init();
         nav();
         final TextView headingTextView = (TextView)findViewById(R.id.slide3_heading_textView);
@@ -89,13 +89,12 @@ public class PoetrySlam extends MainActivity {
             @Override
             public void onClick(View v) {
                 //todo : copy
-                if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-                    //we are connected to a network
+                if(InternetConnection.checkConnection(getApplicationContext())){
                     connected = true;
-                }
-                else
+                }else{
                     connected = false;
+                }
+
                 if(connected){
                     if(!sharedPreferenceConfig.getstatus34()){
                         //todo:set context
@@ -175,13 +174,12 @@ public class PoetrySlam extends MainActivity {
             @Override
             public void onClick(View v) {
                 //todo : copy
-                if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-                    //we are connected to a network
+                if(InternetConnection.checkConnection(getApplicationContext())){
                     connected = true;
-                }
-                else
+                }else{
                     connected = false;
+                }
+
                 if(connected){
                     Dialog.show();
                     //event name
@@ -237,13 +235,12 @@ public class PoetrySlam extends MainActivity {
             @Override
             public void onClick(View v) {
                 //todo : copy
-                if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-                    //we are connected to a network
+                if(InternetConnection.checkConnection(getApplicationContext())){
                     connected = true;
-                }
-                else
+                }else{
                     connected = false;
+                }
+
 
                 if(connected){
                     progressDialog.show();

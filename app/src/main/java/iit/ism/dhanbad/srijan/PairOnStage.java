@@ -87,13 +87,12 @@ public class PairOnStage extends MainActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-                    //we are connected to a network
+                if(InternetConnection.checkConnection(getApplicationContext())){
                     connected = true;
-                }
-                else
+                }else{
                     connected = false;
+                }
+
                 if(connected){
                 if(!sharedPreferenceConfig.getstatus31()){
                     //todo:set context
@@ -170,13 +169,12 @@ public class PairOnStage extends MainActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-                    //we are connected to a network
+                if(InternetConnection.checkConnection(getApplicationContext())){
                     connected = true;
-                }
-                else
+                }else{
                     connected = false;
+                }
+
                 if(connected){
 
                 Dialog.show();
@@ -231,13 +229,12 @@ public class PairOnStage extends MainActivity {
 
             @Override
             public void onClick(View v) {
-                if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-                    //we are connected to a network
+                if(InternetConnection.checkConnection(getApplicationContext())){
                     connected = true;
-                }
-                else
+                }else{
                     connected = false;
+                }
+
                 if(connected){
 
                 progressDialog.show();

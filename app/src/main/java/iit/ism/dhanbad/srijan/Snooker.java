@@ -87,13 +87,12 @@ public class Snooker extends MainActivity {
             @Override
             public void onClick(View v) {
                 //todo : copy
-                if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-                    //we are connected to a network
+                if(InternetConnection.checkConnection(getApplicationContext())){
                     connected = true;
-                }
-                else
+                }else{
                     connected = false;
+                }
+
                 if(connected){
                     if(!sharedPreferenceConfig.getstatus44()){
                         //todo:set context
@@ -174,13 +173,12 @@ public class Snooker extends MainActivity {
             @Override
             public void onClick(View v) {
                 //todo : copy
-                if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-                    //we are connected to a network
+                if(InternetConnection.checkConnection(getApplicationContext())){
                     connected = true;
-                }
-                else
+                }else{
                     connected = false;
+                }
+
                 if(connected){
                     Dialog.show();
                     //event name
@@ -236,13 +234,12 @@ public class Snooker extends MainActivity {
             @Override
             public void onClick(View v) {
                 //todo : copy
-                if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-                    //we are connected to a network
+                if(InternetConnection.checkConnection(getApplicationContext())){
                     connected = true;
-                }
-                else
+                }else{
                     connected = false;
+                }
+
 
                 if(connected){
                     progressDialog.show();

@@ -85,13 +85,13 @@ public class HeadOn extends MainActivity {
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                    connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-                //we are connected to a network
+            public void onClick(View v) {
+                if(InternetConnection.checkConnection(getApplicationContext())){
                 connected = true;
-            }
-            else
+            }else{
                 connected = false;
+            }
+
                 if(connected){
                 if(!sharedPreferenceConfig.getstatus19()){
                     //todo:set context
